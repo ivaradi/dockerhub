@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker build --build-arg vendor=$VENDOR release=$RELEASE -f $DOCKERFILE_PATH -t $IMAGE_NAME .
