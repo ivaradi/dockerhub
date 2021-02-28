@@ -9,7 +9,8 @@ RUN apt-get update -y && \
         equivs \
         git \
         git-buildpackage \
-        osc && \
+        osc \
+        python3-m2crypto && \
     apt-get clean
 
 COPY run.sh oscrc.enc signing-key.txt.enc /build/
