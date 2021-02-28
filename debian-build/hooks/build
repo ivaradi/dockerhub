@@ -1,3 +1,12 @@
 #!/bin/sh
 
-docker build --build-arg vendor=$VENDOR release=$RELEASE -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+case "${DOCKER_TAG}" in
+     bionic|focal|groovy|hirsute)
+        vendor="ubuntu"
+        ;;
+     *)
+         vendor="debian"
+         ;;
+esac
+
+docker build --build-arg vendor=${vendor} release=${DOCKER_TAG} -f ${DOCKERFILE_PATH} -t ${IMAGE_NAME} .
